@@ -2,6 +2,7 @@ package com.swervedrivespecialties.exampleswerve.commands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
 import com.swervedrivespecialties.exampleswerve.subsystems.DrivetrainSubsystem;
+import com.swervedrivespecialties.exampleswerve.subsystems.Limelight;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.geometry.Translation2d;
 import org.frcteam2910.common.robot.Utilities;
@@ -24,7 +25,17 @@ public class DriveCommand extends Command {
         // Square the strafe stick
         strafe = Math.copySign(Math.pow(strafe, 2.0), strafe);
 
-        double rotation = Robot.getOi().getPrimaryJoystick().getRawAxis(4);
+        double rotation;
+        if(Robot.getOi().getPrimaryJoystick().getRawButton(1))
+        {
+            rotation = 1; //add limelight thing
+        }
+        else
+        {
+            rotation = Robot.getOi().getPrimaryJoystick().getRawAxis(4);  
+        }
+        
+        
         rotation = Utilities.deadband(rotation);
         // Square the rotation stick
         rotation = Math.copySign(Math.pow(rotation, 2.0), rotation);
