@@ -4,8 +4,13 @@ out/
 *.iml
 
 # Gradle files
-.gradle/
-build/
+!.gradle/
+!build/
+
+!gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+.gradletasknamecache
 
 
 # Test outputs
