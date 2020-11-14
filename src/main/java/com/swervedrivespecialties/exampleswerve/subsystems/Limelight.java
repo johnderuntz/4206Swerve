@@ -8,10 +8,11 @@
 package com.swervedrivespecialties.exampleswerve.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import com.swervedrivespecialties.exampleswerve.commands.DriveCommand;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.lang.Math;
 
@@ -26,6 +27,9 @@ public class Limelight extends SubsystemBase {
   public NetworkTableEntry skew = ll.getEntry("ts");
   public NetworkTableEntry led = ll.getEntry("ledMode");
   public NetworkTableEntry cameraMode = ll.getEntry("camMode");
+
+  private static Limelight instance;
+
   
   public Limelight() {
 
@@ -153,6 +157,10 @@ public class Limelight extends SubsystemBase {
     double power = horizontalOffset.getDouble(0)*PID;
     return power;
   }
+
+
+
+
 
 
 
