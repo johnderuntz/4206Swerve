@@ -1,6 +1,7 @@
 package com.swervedrivespecialties.exampleswerve.commands;
 
 import com.swervedrivespecialties.exampleswerve.Robot;
+import com.swervedrivespecialties.exampleswerve.RobotMap;
 import com.swervedrivespecialties.exampleswerve.subsystems.DrivetrainSubsystem;
 import com.swervedrivespecialties.exampleswerve.subsystems.Limelight;
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,12 +10,17 @@ import org.frcteam2910.common.robot.Utilities;
 
 public class DriveCommand extends Command {
 
+
     public DriveCommand() {
         requires(DrivetrainSubsystem.getInstance());
+
+
     }
 
     @Override
     protected void execute() {
+
+
         double forward = Robot.getOi().getPrimaryJoystick().getRawAxis(1);
         forward = Utilities.deadband(forward);
         // Square the forward stick
@@ -28,7 +34,7 @@ public class DriveCommand extends Command {
         double rotation;
         if(Robot.getOi().getPrimaryJoystick().getRawButton(1))
         {
-            rotation = 1; //add limelight thing
+            rotation = Robot.limelight.rotatetoTarget(RobotMap.LimeLightDrivePID); //add limelight thing
         }
         else
         {
